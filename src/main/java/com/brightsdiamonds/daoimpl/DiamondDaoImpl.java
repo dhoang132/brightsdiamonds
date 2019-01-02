@@ -43,7 +43,7 @@ public class DiamondDaoImpl implements DiamondDao {
 	}
 
 	public List<Diamond> getAllDiamonds() {
-		String sqlQuery = "SELECT * FROM diamond WHERE in_stock = 1";
+		String sqlQuery = "SELECT * FROM diamond WHERE in_stock = 1 ORDER BY carat asc";
 		List<Diamond> diamondList = namedParamJdbcTemplate.query(sqlQuery, new DiamondRowMapper());
 		return diamondList;
 	}

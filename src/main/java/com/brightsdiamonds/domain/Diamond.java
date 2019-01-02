@@ -32,6 +32,8 @@ public class Diamond implements Product<Diamond>{
 	private String cutlet;
 	
 	private String Fluorescence;
+	
+	private String diamondVideo;
 
 	
 	
@@ -166,6 +168,16 @@ public class Diamond implements Product<Diamond>{
 
 	public void setFluorescence(String fluorescence) {
 		Fluorescence = fluorescence;
+	}
+	
+	
+
+	public String getDiamondVideo() {
+		return diamondVideo;
+	}
+
+	public void setDiamondVideo(String diamondVideo) {
+		this.diamondVideo = diamondVideo;
 	}
 
 	@Override

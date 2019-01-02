@@ -24,6 +24,14 @@ public class FillerController {
 		return "about";
 	}
 	
+	@RequestMapping("/contact")
+	public String getContactPage(Model model) throws UnsupportedEncodingException {
+		byte[] encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(1).getImageData());
+		String base64Encoded = new String (encodeBase64, "UTF-8");
+		model.addAttribute("logo", base64Encoded);
+		return "contact";
+	}
+	
 	@RequestMapping("/education")
 	public String getEducationPage(Model model) throws UnsupportedEncodingException {
 		byte[] encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(1).getImageData());

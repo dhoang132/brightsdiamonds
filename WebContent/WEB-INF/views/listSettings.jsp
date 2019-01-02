@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -75,15 +76,15 @@
 	<body>
 		<div id="page">
 			<header id="header">
-			<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+			<c:set var="contextPath" value=""/>
 				<div id="header-inner">	
 					<div id="logo">
-						<h1><img  src="data:image/jpeg;base64,${logo}" width="120" height="60" /></span></h1>
+						<h1><a href="${contextPath}/"><img itemprop ="image" src="data:image/jpeg;base64,${logo}" alt="Brightsdiamonds logo" width="180" height="90" /></a></span></h1>
 					</div>
 					<div id="top-nav">
 						<ul>
 						<li><a href="${contextPath}/about">About</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="${contextPath}/contact">Contact</a></li>
 						<c:choose>
 							<c:when test= "${not empty user}">
 								<li><a href= "${contextPath}/userDetails">${user.email}</a></li>
@@ -121,10 +122,11 @@
 					<td><c:set var="number" value="5"/>
 					<img  src="data:image/jpeg;base64,${settingImageList[(row.id - 1)]}" width="220" height="200"/>
 					<br/>
-					<c:set value = "${pageContext.request.contextPath}" var = "contextPath">
+					<c:set value = "" var = "contextPath">
 						</c:set>
 						<a href="${contextPath}/settingsDetails?id=${row.id}">${row.name}</a><br/>
-						${row.unitPrice}<br/>
+						
+						<fmt:formatNumber value = "${row.unitPrice}" type = "currency"/><br/>
 						
 					</td>
 				</c:forEach>

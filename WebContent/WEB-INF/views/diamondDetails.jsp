@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- <html>
 <head>
@@ -120,15 +121,15 @@ table th, td {
 	<body>
 		<div id="page">
 			<header id="header">
-			<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+			<c:set var="contextPath" value=""/>
 				<div id="header-inner">	
 					<div id="logo">
-						<h1><img  src="data:image/jpeg;base64,${logo}" width="120" height="60" /></span></h1>
+						<h1><a href="${contextPath}/"><img itemprop ="image" src="data:image/jpeg;base64,${logo}" alt="Brightsdiamonds logo" width="180" height="90" /></a></span></h1>
 					</div>
 					<div id="top-nav">
 						<ul>
 						<li><a href="${contextPath}/about">About</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="${contextPath}/contact">Contact</a></li>
 						<c:choose>
 							<c:when test= "${not empty user}">
 								<li><a href= "${contextPath}/userDetails">${user.email}</a></li>
@@ -156,8 +157,10 @@ table th, td {
 						<div class="article">
 									<div align="center">
 										<h3>${diamond.name}</h3><hr/><br/>
-										<h3>Price:$${diamond.unitPrice}</h3><br/>
-										<c:set value = "${pageContext.request.contextPath}" var = "contextPath">
+
+										
+										<h3>Price: <fmt:formatNumber value = "${diamond.unitPrice}" type = "currency"/></h3><br/>
+										<c:set value = "" var = "contextPath">
 										</c:set>
 
 										<c:choose>
@@ -179,10 +182,20 @@ table th, td {
 										<br/><br/>
 										<table border="0" width= 400px>
 										<tr>
-										<td>
 										
 										<td>
-											 <img  src="data:image/jpeg;base64,${productImage}" />
+											<table border="0" width= 400px>
+											 <tr>
+											 	<td>
+											 		<a href="/diamondImage?stockItem=${diamond.id}"><img  src="data:image/jpeg;base64,${productImage}"  width="400" height="266" />
+											 	</td>
+											 </tr>
+											 <tr>
+											 	<td>
+											 		<a href="/diamondImage?stockItem=${diamond.id+100}"><img  src="data:image/jpeg;base64,${productImage2}" width="400" height="266" />
+											 	</td>
+											 </tr>
+											 </table>
 										</td>
 										
 										<td>
@@ -229,6 +242,9 @@ table th, td {
 										</table>
 										</td>
 										</table>
+										<c:if test="${not empty diamond.diamondVideo}">
+    										<iframe width="560" height="315" src="${diamond.diamondVideo}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+										</c:if>									
 									</div>
 						</div>
 					</main>

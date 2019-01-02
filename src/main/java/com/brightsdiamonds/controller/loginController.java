@@ -32,6 +32,20 @@ public class loginController {
 	public String homePage(HttpSession session, Model model) throws UnsupportedEncodingException {
 		User user = (User)session.getAttribute("user");
 		if(user == null) {
+			
+			byte[] encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(1).getImageData());
+			String base64Encoded = new String (encodeBase64, "UTF-8");
+			model.addAttribute("logo", base64Encoded);
+			
+			encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(3).getImageData());
+			String homeImage = new String (encodeBase64, "UTF-8");
+			model.addAttribute("homeImage", homeImage);
+			
+			encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(4).getImageData());
+			String homeImage2 = new String (encodeBase64, "UTF-8");
+			model.addAttribute("homeImage2", homeImage2);
+			
+			
 			return "home";
 		}
 		
@@ -83,6 +97,23 @@ public class loginController {
 		model.addAttribute("homeImage2", homeImage2);
 		
 		return "home";
+	}
+	
+	@RequestMapping("/homeTest")
+	public String testHome(HttpSession session, Model model) throws UnsupportedEncodingException {
+		byte[] encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(1).getImageData());
+		String base64Encoded = new String (encodeBase64, "UTF-8");
+		model.addAttribute("logo", base64Encoded);
+		
+		encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(3).getImageData());
+		String homeImage = new String (encodeBase64, "UTF-8");
+		model.addAttribute("homeImage", homeImage);
+		
+		encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(4).getImageData());
+		String homeImage2 = new String (encodeBase64, "UTF-8");
+		model.addAttribute("homeImage2", homeImage2);
+		
+		return "homeTest";
 	}
 	
 //	 @RequestMapping("/")

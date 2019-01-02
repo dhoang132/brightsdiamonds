@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- <html>
 <head>
@@ -103,15 +104,15 @@ table th, td {
 	<body>
 		<div id="page">
 			<header id="header">
-			<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+			<c:set var="contextPath" value=""/>
 				<div id="header-inner">	
 					<div id="logo">
-						<h1><img  src="data:image/jpeg;base64,${logo}" width="120" height="60" /></span></h1>
+						<h1><a href="${contextPath}/"><img itemprop ="image" src="data:image/jpeg;base64,${logo}" alt="Brightsdiamonds logo" width="180" height="90" /></a></span></h1>
 					</div>
 					<div id="top-nav">
 						<ul>
 						<li><a href="${contextPath}/about">About</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="${contextPath}/contact">Contact</a></li>
 						
 						<c:choose>
 							<c:when test= "${not empty user}">
@@ -142,14 +143,23 @@ table th, td {
 	<h2 align="center" style="color: #DF0101">Shopping cart</h2>
 	<hr />
 	<div align="center">
-		<h3 style="color: #DF0101">cart total ${cartItems.grandTotal}</h3><br/>
+		<h3 style="color: #DF0101">cart total <fmt:formatNumber value = "${cartItems.grandTotal}" type = "currency"/></h3><br/>
 		
 		<c:forEach items="${cartItems.cartItems}" var="entry">
-    		Key = ${entry.key}, value = ${entry.value.product.name}, ${entry.value.product.unitPrice}<br>
+    		Key = ${entry.key}, value = ${entry.value.product.name}, <fmt:formatNumber value = "${entry.value.product.unitPrice}" type = "currency"/><br>
 		</c:forEach>
 		
 		<hr/>
+		<table Width = 400px>
+		<tr>
+		<td>
+		<a href= "${contextPath}/clearCart" style = "font-size: 30px">Clear Cart</a><br/>
+		</td>
+		<td>
 		<a href= "${contextPath}/checkOut" style = "font-size: 30px">Check Out</a><br/>
+		</td>
+		</tr>
+		</table>
 	</div>
 	
 	

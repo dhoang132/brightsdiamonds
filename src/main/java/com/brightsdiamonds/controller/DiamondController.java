@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.brightsdiamonds.domain.Diamond;
 import com.brightsdiamonds.domain.ProductImage;
+import com.brightsdiamonds.domain.SettingImage;
 import com.brightsdiamonds.service.DiamondService;
 import com.brightsdiamonds.service.ProductImageService;
 import com.brightsdiamonds.service.StaticImageService;
@@ -48,13 +49,34 @@ public class DiamondController {
 		String base64Encoded = new String (encodeBase64, "UTF-8");
 		model.addAttribute("productImage", base64Encoded);
 		
+		encodeBase64 = Base64.encodeBase64(productImageService.getProductImage(diamond.getId()+100).getImageData());
+		base64Encoded = new String (encodeBase64, "UTF-8");
+		model.addAttribute("productImage2", base64Encoded);
+		
 		encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(1).getImageData());
 		base64Encoded = new String (encodeBase64, "UTF-8");
 		model.addAttribute("logo", base64Encoded);
 		
 		model.addAttribute("diamond", diamond);
 		
+		encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(1).getImageData());
+		base64Encoded = new String (encodeBase64, "UTF-8");
+		model.addAttribute("logo", base64Encoded);
+		
 		return "diamondDetails";
+	}
+	
+	@RequestMapping("/diamondImage")
+	public String getImagesByStockItem(@RequestParam("stockItem") int id, Model model) throws UnsupportedEncodingException {
+		byte[] encodeBase64 = Base64.encodeBase64(productImageService.getProductImage(id).getImageData());
+		String base64Encoded = new String (encodeBase64, "UTF-8");
+		model.addAttribute("productImage", base64Encoded);
+		
+		encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(1).getImageData());
+		base64Encoded = new String (encodeBase64, "UTF-8");
+		model.addAttribute("logo", base64Encoded);
+		
+		return "diamondImage";
 	}
 }
 //byte[] encodeBase64 = Base64.encode(usersService.getAllFoto());

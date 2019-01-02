@@ -59,8 +59,8 @@ public class PayPalController {
 	@Autowired
 	private StaticImageService staticImageService;
 	
-	String clientId = "";
-	String clientSecret = "";
+	String clientId = "AcstogXtIWZjQ4vECNTO3s001OR8sMaIlrdazFqwR5LpTQzwQ2FsTx8hqELRWYwpPIIlXq2BooTFLFNX";
+	String clientSecret = "EKk19gRL3_AX-GFqSuiWR_0EgWWSHAEVcsiCA2cNxbPTrE2FokM2MiWGUBrUT8g6jDqIwqf7Gsc3cp1M";
 
 	APIContext context = new APIContext(clientId, clientSecret, "live");
 	
@@ -87,7 +87,7 @@ public class PayPalController {
 				if(!diamondService.getDiamond(diamond.getId()).getIsInStock()){
 				cart.removeCartItem(key);
 				RedirectView redirectView = new RedirectView();
-				redirectView.setUrl("http://brightsdiamonds.com/brights-diamonds-webapp/itemNotAval");
+				redirectView.setUrl("https://brightsdiamonds.com/itemNotAval");
 				return redirectView;
 				}
 			}
@@ -101,7 +101,7 @@ public class PayPalController {
 		
 		if(cart.getGrandTotal()==0) {
 			RedirectView redirectView = new RedirectView();
-			redirectView.setUrl("http://brightsdiamonds.com/brights-diamonds-webapp/viewCart");
+			redirectView.setUrl("https://brightsdiamonds.com/viewCart");
 			return redirectView;
 		}
 		// Set payer details
@@ -110,8 +110,8 @@ public class PayPalController {
 
 		// Set redirect URLs
 		RedirectUrls redirectUrls = new RedirectUrls();
-		redirectUrls.setCancelUrl("http://brightsdiamonds.com/brights-diamonds-webapp/cancelPayment");
-		redirectUrls.setReturnUrl("http://brightsdiamonds.com/brights-diamonds-webapp/successfulPayment");
+		redirectUrls.setCancelUrl("https://brightsdiamonds.com/cancelPayment");
+		redirectUrls.setReturnUrl("https://brightsdiamonds.com/successfulPayment");
 
 		// Set payment details
 		Details details = new Details();

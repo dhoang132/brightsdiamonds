@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- <html>
 <head>
@@ -121,21 +122,21 @@ table th, td {
 	<body>
 		<div id="page">
 			<header id="header">
-			<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+			<c:set var="contextPath" value=""/>
 				<div id="header-inner">	
 					<div id="logo">
-						<h1><img  src="data:image/jpeg;base64,${logo}" width="120" height="60" /></span></h1>
+						<h1><a href="${contextPath}/"><img itemprop ="image" src="data:image/jpeg;base64,${logo}" alt="Brightsdiamonds logo" width="180" height="90" /></a></span></h1>
 					</div>
 					<div id="top-nav">
 						<ul>
 						<li><a href="${contextPath}/about">About</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="${contextPath}/contact">Contact</a></li>
 						<c:choose>
 							<c:when test= "${not empty user}">
 								<li><a href= "${contextPath}/userDetails">${user.email}</a></li>
 							</c:when>
 							<c:otherwise><li><a href= "${contextPath}/login">Login</a></li></c:otherwise>
-							</c:choose>
+						</c:choose>
 						<li><a href= "${contextPath}/logout">Logout</a></li>
 						<li><a href="${contextPath}/viewCart">Cart</a></li>
 						</ul>
@@ -157,7 +158,7 @@ table th, td {
 						<div class="article">
 									<div align="center">
 										<h3>${engagementSetting.name}</h3><hr/>
-										<c:set value = "${pageContext.request.contextPath}" var = "contextPath">
+										<c:set value = "" var = "contextPath">
 										</c:set>
 										<table border="0" width= 400px>
 										<tr>
@@ -187,17 +188,35 @@ table th, td {
 													<td><form:label path="size">Ring Size *</form:label></td>
 													<td>
 														<form:select path = "size">
-														<form:option value = "6.0"> 6.0</form:option>
-														<form:option value = "6.5"> 6.5</form:option>
+														<form:option value = "4.00"> 4.0</form:option>
+														<form:option value = "4.25"> 4.25</form:option>
+														<form:option value = "4.50"> 4.50</form:option>
+														<form:option value = "4.75"> 4.75</form:option>
+														<form:option value = "5.00"> 5.0</form:option>
+														<form:option value = "5.25"> 5.25</form:option>
+														<form:option value = "5.50"> 5.5</form:option>
+														<form:option value = "5.75"> 5.75</form:option>
+														<form:option value = "6.00"> 6.0</form:option>
+														<form:option value = "6.25"> 6.25</form:option>
+														<form:option value = "6.50"> 6.50</form:option>
+														<form:option value = "6.75"> 6.75</form:option>
 														<form:option selected = "selected" value = "7.0"> 7.0</form:option>
-														<form:option value = "7.5"> 7.5</form:option>
-														<form:option value = "8.0"> 8.0</form:option>
+														<form:option value = "7.00"> 7.0</form:option>
+														<form:option value = "7.25"> 7.25</form:option>
+														<form:option value = "7.50"> 7.5</form:option>
+														<form:option value = "7.75"> 7.75</form:option>
+														<form:option value = "8.00"> 8.0</form:option>
+														<form:option value = "8.25"> 8.25</form:option>
+														<form:option value = "8.50"> 8.5</form:option>
+														<form:option value = "8.75"> 8.75</form:option>
+														<form:option value = "9.00"> 9.00</form:option>
 														</form:select>
 													</td>
 												</tr>
 												<tr>
 												<td></td>
-												<td>$${engagementSetting.unitPrice}</td>
+												
+												<td><fmt:formatNumber value = "${engagementSetting.unitPrice}" type = "currency"/></td>
 												</tr>
 												</tr>
 												<tr>
@@ -235,13 +254,109 @@ table th, td {
 											<td>Available Metal</td><td>${engagementSetting.metal}</td>
 											</tr>
 											<tr>
-											<td>Width</td><td>${engagementSetting.width}</td>
+											<td>Width</td><td>${engagementSetting.width}mm</td>
 											</tr>
 										</table>
 										</td>
 										</tr>
 										</table>
 									</div>
+									
+						</div>
+						<div align="left"><br/>Item Details <hr/></div>
+						<div align = "center">
+							<table width = 750px>
+								<tr>
+									<td align = "left">
+										Stock Number: ${engagementSetting.stockItem}
+									</td>
+									<td align = "right">
+										Price: <fmt:formatNumber value = "${engagementSetting.unitPrice}" type = "currency"/>
+									</td>
+								</tr>							
+							</table> 
+							<table width = 750px align="center">
+							<tr>
+							<td>
+							<table width = 400px align = "center">
+								<tr>
+								<td>Stock Number:</td>
+								<td>${engagementSetting.stockItem}</td>								
+								</tr>
+								<tr>
+								<td>Metal:</td>
+								<td>${engagementSetting.metal}</td>
+								</tr>
+							</table> 
+							</td>
+							<td><hr width="1" size="100"></td>
+							<td>
+							<table width = 400px align="center">
+								<tr>
+								<td>Width:</td>
+								<td>${engagementSetting.width}mm</td>								
+								</tr>
+								<tr>
+								<td></td>
+								<td></td>
+								</tr>
+							</table> 
+							</td>
+							</tr>
+							</table>
+							<br/>
+							<c:choose>
+							<c:when test= "${engagementSetting.diamondNumber > 0}">
+								<table width = 750px>
+								<tr>
+									<td align = "left">
+										Side Diamonds
+									</td>
+									<td align = "right">
+									
+									</td>
+								</tr>							
+							</table> 
+							<table width = 750px align="center">
+							<tr>
+							<td>
+							<table width = 400px align = "center">
+								<tr>
+								<td>Number of Diamonds:</td>
+								<td>${engagementSetting.diamondNumber}</td>								
+								</tr>
+								<tr>
+								<td>Carat Weight:</td>
+								<td>${engagementSetting.caratTotal}</td>
+								</tr>
+							</table> 
+							</td>
+							<td><hr width="1" size="100"></td>
+							<td>
+							<table width = 400px align="center">
+								<tr>
+								<td>Shape:</td>
+								<td>${engagementSetting.diamondShape}</td>								
+								</tr>
+								<tr>
+								<td>Color:</td>
+								<td>${engagementSetting.color}</td>
+								</tr>
+								<tr>
+								<td>Clarity:</td>
+								<td>${engagementSetting.clarity}</td>								
+								</tr>
+								<tr>
+								<td></td>
+								<td></td>
+								</tr>
+							</table> 
+							</td>
+							</tr>
+							</table>
+							</c:when>
+							<c:otherwise><br/></c:otherwise>
+							</c:choose>
 						</div>
 					</main>
 					

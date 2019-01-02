@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +27,7 @@
 											<span style="font-size: large;">Brightsdiamonds.com</span><br />
 										</div>
 									</td>
-									<td nowrap="nowrap">Brightsdiamonds.com<br />Cumberland PO Box 22345<br />404-518-2618
+									<td nowrap="nowrap">Brightsdiamonds.com<br />3045 Gordy Parkway Suite 108, Georgia 30066<br />404-518-2618
 									</td>
 								</tr>
 							</table>
@@ -61,7 +62,8 @@
 								</tr>
 								<tr>
 									<td nowrap="nowrap"><b>Order Grand Total:</b></td>
-									<td width="98%"><b>$${paypalInformation.cartTotal}</b></td>
+									
+									<td width="98%"><b><fmt:formatNumber value = "${paypalInformation.cartTotal}" type = "currency"/></b></td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap"><b>Payment Method:</b></td>
@@ -96,7 +98,8 @@
 											</tr>
 											<tr>
 												<td nowrap="nowrap">Products Subtotal:&nbsp;</td>
-												<td width="98%">$${(paypalInformation.cartTotal-30)}</td>
+												
+												<td width="98%"><fmt:formatNumber value = "${(paypalInformation.cartTotal-30)}" type = "currency"/></td>
 											</tr>
 											<tr>
 												<td nowrap="nowrap">Next Day Express Shipping:</td>
@@ -109,7 +112,8 @@
 											<tr>
 												<td nowrap="nowrap"><b>Total for this Order:&nbsp;</b>
 												</td>
-												<td><b>$${paypalInformation.cartTotal}</b></td>
+												
+												<td><b><fmt:formatNumber value = "${paypalInformation.cartTotal}" type = "currency"/></b></td>
 											</tr>
 											<tr>
 												<td colspan="2"><br />

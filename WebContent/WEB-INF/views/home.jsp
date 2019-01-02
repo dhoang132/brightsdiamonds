@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- <html>
+<!-- 
+
+<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=ZfWmMyB9o3pzCDWFRhgeS462McgkzZgmT8sSHJlDc3d87EyxgbsONbtUwmUH"></script></span>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Brights Diamonds home page</title>
@@ -11,6 +14,8 @@
 <body>
 	<h2 align="left" style="color: #add8e6">
 			<a href="${contextPath}/listDiamonds" style="font-size: 30px">View our Diamonds</a><tr/>
+			<input class="form-control" oninput="setTwoNumberDecimal(this)" step="0.01" value="0.00" type="number" name="item[amount]" id="item_amount">
+			
 	</h2>
 	<hr />
 	<h1 align="center">Brights Diamonds</h1>
@@ -29,9 +34,7 @@
 
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Brights Diamonds Home Page</title>
-		<style type="text/css">
+<style type="text/css">
 			html, #page { padding:0; margin:0;}
 			body { margin:0; padding:0; width:100%; color:#959595; font:normal 16px/2.0em Sans-Serif;} 
 			h1, h2, h3, h4, h5, h6 {color:darkgreen;}
@@ -97,18 +100,18 @@
 			}
 		</script>
 	</head>
-	<body>
+	<body itemscope itemtype="http://schema.org/website">	
 		<div id="page">
 			<header id="header">
-			<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+			<c:set var="contextPath" value=""/>
 				<div id="header-inner">	
 					<div id="logo">
-					<h1><img  src="data:image/jpeg;base64,${logo}" width="120" height="60" /></span></h1>
+					<h1><a href="${contextPath}/"><img itemprop ="image" src="data:image/jpeg;base64,${logo}" alt="Brightsdiamonds logo" width="180" height="90" /></a></span></h1>
 					</div>
 					<div id="top-nav">
 						<ul>
 						<li><a href="${contextPath}/about">About</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="${contextPath}/contact">Contact</a></li>
 						
 						<c:choose>
 							<c:when test= "${not empty user}">
@@ -126,7 +129,7 @@
 			</header>
 			<div class="feature">
 				<div class="feature-inner">
-				<h1>Welcome to BrightsDiamonds</h1>
+				<h1>Welcome to <span itemprop="name">BrightsDiamonds</span></h1>
 				</div>
 			</div>
 		
@@ -138,11 +141,12 @@
 						<div class="article">
 						<table>
 							<tr>
-							<td><img  src="data:image/jpeg;base64,${homeImage}" Height="400" /></td>
+							<td><img  src="data:image/jpeg;base64,${homeImage}" Height="400" />
+							</td>
 								<td><img  src="data:image/jpeg;base64,${homeImage2}" Height ="400" /></td>
 							</tr>
 						</table>
-						</div>
+						</div>					
 					</main>
 					
 					<nav id="sidebar">
@@ -164,7 +168,10 @@
 			<footer id="footer">
 				<div id="footer-inner">
 					<p>&copy; Copyright <a href="${contextPath}/">Home</a> &#124; <a href="${contextPath}/about">Terms of Use</a></p>
-					<div class="clr"></div>
+					<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=ZfWmMyB9o3pzCDWFRhgeS462McgkzZgmT8sSHJlDc3d87EyxgbsONbtUwmUH"></script></span>
+					<div class="clr">"<span itemprop="description">BrightsDiamonds offers the highest quality Diamonds at the lowest possible price.  Expect a bigger diamond when you buy from BrightsDiamonds. 
+			Specialize in Engagement Rings and other fine Jewelry. We carry Lab Grown diamonds and GIA Certified Diamonds.</span>"
+			 </div>
 				</div>
 			</footer>
 		</div>

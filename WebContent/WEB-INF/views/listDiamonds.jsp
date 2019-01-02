@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- <html>
 <head>
@@ -121,15 +122,15 @@ table th, td {
 	<body>
 		<div id="page">
 			<header id="header">
-			<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+			<c:set var="contextPath" value=""/>
 				<div id="header-inner">	
 					<div id="logo">
-						<h1><img  src="data:image/jpeg;base64,${logo}" width="120" height="60" /></span></h1>
+						<h1><a href="${contextPath}/"><img itemprop ="image" src="data:image/jpeg;base64,${logo}" alt="Brightsdiamonds logo" width="180" height="90" /></a></span></h1>
 					</div>
 					<div id="top-nav">
 						<ul>
 						<li><a href="${contextPath}/about">About</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="${contextPath}/contact">Contact</a></li>
 						<c:choose>
 							<c:when test= "${not empty user}">
 								<li><a href= "${contextPath}/userDetails">${user.email}</a></li>
@@ -170,12 +171,12 @@ table th, td {
 			</tr>
 			<c:forEach var="row" items="${diamondList}">
 				<tr>
-					<td><c:set value = "${pageContext.request.contextPath}" var = "contextPath">
+					<td><c:set value = "" var = "contextPath">
 						</c:set>
 						<a href="${contextPath}/diamondDetails?id=${row.id}">${row.certificateId}</a>
 					</td>
 					<td><c:out value="${row.shape}" /></td>
-					<td><c:out value="$${row.unitPrice}" /></td>
+					<td><fmt:formatNumber value = "${row.unitPrice}" type = "currency"/></td>
 					<td><c:out value="${row.carat}" /></td>
 					<td><c:out value="${row.cut}" /></td>
 					<td><c:out value="${row.color}" /></td>

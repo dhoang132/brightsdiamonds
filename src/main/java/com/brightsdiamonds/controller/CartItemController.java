@@ -25,7 +25,6 @@ import com.brightsdiamonds.service.EngagementSettingService;
 import com.brightsdiamonds.service.StaticImageService;
 
 @Controller
-@SessionAttributes("cartItems")
 public class CartItemController {
 	
 	@Autowired
@@ -99,6 +98,30 @@ public class CartItemController {
 		String base64Encoded = new String (encodeBase64, "UTF-8");
 		model.addAttribute("logo", base64Encoded);
 		return "cartList";
+		
+	}
+	
+	@RequestMapping("/clearCart")
+	public String clearCart(HttpSession session, Model model) throws UnsupportedEncodingException {
+		session.removeAttribute("cartItems");		
+//		for (String key: cart.getCartItems().keySet()) {
+//		    System.out.println("key : " + key);
+//		    System.out.println("value : " + cart.getCartItems().get(key).getProduct().getName());
+//		}
+		
+		byte[] encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(1).getImageData());
+		String base64Encoded = new String (encodeBase64, "UTF-8");
+		model.addAttribute("logo", base64Encoded);
+		
+		encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(3).getImageData());
+		String homeImage = new String (encodeBase64, "UTF-8");
+		model.addAttribute("homeImage", homeImage);
+		
+		encodeBase64 = Base64.encodeBase64(staticImageService.getStaticImage(4).getImageData());
+		String homeImage2 = new String (encodeBase64, "UTF-8");
+		model.addAttribute("homeImage2", homeImage2);
+		
+		return "home";
 		
 	}
 

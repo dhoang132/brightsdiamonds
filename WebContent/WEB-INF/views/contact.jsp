@@ -135,36 +135,10 @@
 				<div id="content-inner">
 				
 					<main id="contentbar">
-						<div>
-							<img  src="data:image/jpeg;base64,${labVs}" /><br/>
-<h3>What are Lab-Grown diamonds?</h3>
-Diamonds are highly sought after for it's beauty and sparkling characteristics. Until recently diamonds could only be found in nature forming from high temperature and pressures from the earth's mantle. With advancement in technology a new method has been discovered that allows diamonds to be created in a controlled environment, these diamonds are known as Lab-grown diamonds. Lab-grown diamonds are just as spectacular as natural diamonds and impossible to tell the difference without a microscopic exam. What should you be considering when deciding between lab grown diamonds vs. natural diamonds?
-<br/><br/>
-<h3>Lab-grown diamonds vs. Natural diamonds</h3>
-Natural diamodns are found deep within the Earth's mantle and are formed from high temperatures and pressure, while lab-grown diamonds are grown in a controlled environment using the latest technologies to duplicate the environment and conditions of how natural diamonds are formed. Lab-grown diamonds share the same physical properties of a natural diamonds such has hardness and refractive index.
-
-<br/><br/>
-<h3>Is it easy to tell the difference between the two?</h3>
-No. It is impossible to tell the difference from lab-grown diamonds and natural diamonds without expensive equipment. They have identical physical properties.
-<br/><br/>
-
-<h3>Why are Lab-grown diamonds less expensive?</h3>
-While lab grown diamonds vs natural diamonds provide the same quality and brilliance, lab grown diamonds can cost up to 30% less than natural diamonds simply because lab diamonds are easier to come by. Natural diamonds are still rare stones, while lab diamonds can offer a more convenient and budget friendly alternative without affecting the beauty or durability. 
-<br/>
-One thing to note is there is a major difference between these lab grown diamonds and diamond simulants. Cubic zirconia and moissanite will not give off the same brilliance as a natural diamond or lab grown diamonds, since they are not made from carbon crystals. You will find that diamond simulants will have a much lower price tag than lab grown diamonds and will also be of a lower quality.  
-
-<br/><br/>
-<h3>Why should you buy a Lab-grown diamond?</h3>
-Cost can be a good factor when choosing between the two, however there are various other reason why Lab-grown diamonds can be a good choice over natural diamonds. Lab-grown are 100% conflict free since they are grown in a laboratory and do not require any mining. Lab-grown diamonds have little to no environmental impact on the planet.
-<br/><br/>
-
-<h3>What some People say about Lab-grown diamond?</h3>
-"There was no question about going with a Lab-grown diamond for my engagement ring. I felt much better knowing the diamond I was showing off can from a lab in Minnesota instead of from a mine where the person who retrieved the diamond was only being paid pennies to mine it."
-<br/><br/>
-"I had no qualms about going with Lab-grown diamonds VS natural diamonds. In essence, the only difference between the two is that Lab-grown diamonds lack the impurities of natural diamonds. No one can tell the difference and with the lower price tag, I was able to get a slightly large stone to show off!"
-<br/><br/>
-"At first, I was hesitant about going with a Lab-grown diamond but after seeing it, there was no doubt that it was a perfect choice. Not only did it save us a significant amount, which allowed us to put more towards the wedding, it is absolutely stunning! I highly recommend going with a Lab-grown diamond, since the only way anyone will know it is not a natural diamond is only by telling them."
-							
+						<div class="article">
+						Contact Us <br/><br/>
+						Telephone: 404-518-2618 <br/><br/>
+						Address: 3045 Gordy Parkway Suite 108, Georgia 30066<br />
 						</div>
 					</main>
 					
@@ -172,7 +146,7 @@ Cost can be a good factor when choosing between the two, however there are vario
 						<div class="widget">
 							<h3></h3>
 							<ul>
-							<li><a href="${contextPath}/listDiamonds">Lab-Grown Diamonds</a></li>
+							<li><a href="${contextPath}/listDiamonds">Lab Grown Diamonds</a></li>
 							<li><a href="${contextPath}/listSettings">Engagement Rings</a></li>
 							<li><a href="${contextPath}/education">Education</a></li>
 							</ul>
@@ -183,7 +157,7 @@ Cost can be a good factor when choosing between the two, however there are vario
 				</div>
 			</div>
 		
-			
+
 			<footer id="footer">
 				<div id="footer-inner">
 					<p>&copy; Copyright <a href="${contextPath}/">Home</a> &#124; <a href="${contextPath}/about">Terms of Use</a></p>

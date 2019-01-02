@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- <html>
 <head>
@@ -121,15 +122,15 @@ table th, td {
 	<body>
 		<div id="page">
 			<header id="header">
-			<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+			<c:set var="contextPath" value=""/>
 				<div id="header-inner">	
 					<div id="logo">
-						<h1><img  src="data:image/jpeg;base64,${logo}" width="120" height="60" /></span></h1>
+						<h1><a href="${contextPath}/"><img itemprop ="image" src="data:image/jpeg;base64,${logo}" alt="Brightsdiamonds logo" width="180" height="90" /></a></span></h1>
 					</div>
 					<div id="top-nav">
 						<ul>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="${contextPath}/about">About</a></li>
+						<li><a href="${contextPath}/contact">Contact</a></li>
 						<c:choose>
 							<c:when test= "${not empty user}">
 								<li><a href= "${contextPath}/userDetails">${user.email}</a></li>
@@ -170,9 +171,10 @@ table th, td {
 					${paypalInformation.cartProducts}
 				</td>
 				<td>
-				Subtotal = $${(paypalInformation.cartTotal-30)} <br/>
+				<fmt:formatNumber value = "${(paypalInformation.cartTotal-30)}" type = "currency"/>
+				Subtotal = <fmt:formatNumber value = "${paypalInformation.cartTotal}" type = "currency"/> <br/>
 				Shipping = $30.00 <br/>
-				Order Total = $${paypalInformation.cartTotal}
+				Order Total = <fmt:formatNumber value = "${paypalInformation.cartTotal}" type = "currency"/>
 				</td>
 			</tr>
 			
@@ -184,13 +186,11 @@ table th, td {
 					
 					<nav id="sidebar">
 						<div class="widget">
-							<h3>Left heading</h3>
+							<h3></h3>
 							<ul>
 							<li><a href="${contextPath}/listDiamonds">Lab Grown Diamonds</a></li>
 							<li><a href="${contextPath}/listSettings">Engagement Rings</a></li>
-							<li><a href="#">Link 3</a></li>
-							<li><a href="#">Link 4</a></li>
-							<li><a href="#">Link 5</a></li>
+							<li><a href="${contextPath}/education">Education</a></li>
 							</ul>
 						</div>
 					</nav>

@@ -27,6 +27,7 @@ public class DiamondRowMapper implements RowMapper<Diamond> {
 		diamond.setGirdle(rs.getString("girdle"));
 		diamond.setCutlet(rs.getString("cutlet"));
 		diamond.setFluorescence(rs.getString("fluorescence"));
+		diamond.setDiamondVideo(rs.getString("diamond_video"));
 		return diamond;
 	}
 }
